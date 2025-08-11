@@ -13,18 +13,29 @@ const GAME_BOARD = [
 ];
 
 const PLAYERS_NAME = {
-  X: "Player X",
-  O: "Player O",
+  x: "Player X",
+  o: "Player O"
 }
 
 export default function App() {
+  const [playersName, setPlayersName] = useState(PLAYERS_NAME);
+
+  function onNameChange(newName, symbol) {
+    setPlayersName(prevState => {      
+      return {
+        ...prevState,
+        [symbol]: newName
+      }
+    })
+  }
+
   return (
     <div className="app-wrapper">
       <section className="play-area">
-        <Players />
+        <Players playersName={playersName} onNameChange={onNameChange} />
         <GameBoard boardValues={GAME_BOARD}/>
         <NewGame buttonName="New Game" />
-        <Result />
+        <Result playersName={playersName} />
         <div className="result-overlay"></div>
       </section>
     </div>

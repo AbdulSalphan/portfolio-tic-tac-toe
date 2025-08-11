@@ -1,18 +1,18 @@
 import NewGame from "./NewGame";
 import PlayerName from "./PlayerName";
 
-export default function Players() {
+export default function Players({playersName, onNameChange}) {
     return (
         <div className="players-wrapper">
             <ul>
                 <li>
-                    <PlayerName player="Player X" classify="player-x" />
+                    <PlayerName player={playersName.x} classify="x" onNameChange={onNameChange} />
                 </li>
                 <li>
-                    <PlayerName player="Draw" classify="player-draw" />
+                    <PlayerName player="Draw" classify="draw" />
                 </li>
                 <li>
-                    <PlayerName player="Player O" classify="player-o" />
+                    <PlayerName player={playersName.o} classify="o" onNameChange={onNameChange} />
                 </li>
             </ul>
             <NewGame buttonName="Reset Score" />
