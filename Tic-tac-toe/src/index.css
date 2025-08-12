@@ -129,31 +129,31 @@ button.button:hover {
     background-color: #5A1E76;
 }
 
+.result-screen {
+    width: 100vw;
+    height: 100vh;
+    background-color: #2B004055;
+    position: fixed;
+    z-index: 1;
+    top: 0;
+    left: 0;
+    display: none;
+}
+.result-screen.show {
+    display: block;
+}
+
 .result-card {
     position: absolute;
-    width: 80%;
+    width: clamp(250px, 80%, 600px);
     background-color: #2B0040dd;
     z-index: 2;
     top: 50%;
     left: 50%;
     transform: translate(-50%, -50%);
-    padding: 48px 24px;
+    padding: 150px 24px;
     border: 1px solid #43115Bdd;
     border-radius: 10px;
-
-    display: none;
-}
-
-.result-overlay {
-    width: 100vw;
-    height: 100vh;
-    background-color: transparent;
-    position: fixed;
-    z-index: 1;
-    top: 0;
-    left: 0;
-
-    display: none;
 }
 
 .result-card p {

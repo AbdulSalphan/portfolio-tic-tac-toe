@@ -1,5 +1,5 @@
-export default function NewGame({buttonName}) {
+export default function NewGame({buttonName, buttonHandler}) {
     return (
-        <button className="button">{buttonName}</button>
+        <button onClick={buttonHandler} className="button">{buttonName}</button>
     )
 }
