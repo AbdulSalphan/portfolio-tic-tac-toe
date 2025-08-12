@@ -1,6 +1,6 @@
 import { useState } from "react";
 
-export default function PlayerName({player, classify, onNameChange}) {
+export default function PlayerName({scores, player, classify, onNameChange}) {
     const [editField, setEditField] = useState(false);
     const [newName, setNewName] = useState(player);
 
@@ -31,7 +31,7 @@ export default function PlayerName({player, classify, onNameChange}) {
     return (
         <div className={`player-box player-${classify}`}>
             {nameField}
-            <span>0</span>
+            <span>{scores}</span>
         </div>
     )
 }

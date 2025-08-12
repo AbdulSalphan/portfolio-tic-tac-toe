@@ -82,10 +82,12 @@ export default function App() {
     winner = "Draw";
   }
 
+  console.log("test outside");
+
   return (
     <div className="app-wrapper">
       <section className="play-area">
-        <Players playersName={playersName} onNameChange={onNameChange} />
+        <Players winner={winner} playersName={playersName} onNameChange={onNameChange} />
         <GameBoard boardValues={newGameBoard} winner={winner} tileClickHandler={tileClickHandler}/>
         <NewGame buttonHandler={() => buttonHandler("Reset Game")} buttonName="New Game" />
         <Result buttonHandler={buttonHandler} playersName={playersName} winner={winner} />
