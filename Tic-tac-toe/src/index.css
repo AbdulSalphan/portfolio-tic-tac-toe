@@ -105,6 +105,24 @@ button.button:hover {
     width: 28%;
     aspect-ratio: 1/1;
     transition: var(--animation);
+    position: relative;
+}
+
+.game-board .game-board-row li button {
+    font-size: 72px;
+    text-transform: uppercase;
+    background-color: transparent;
+    border: none;
+    outline: none;
+    width: 100%;
+    height: 100%;
+}
+.game-board .game-board-row li.symbol-x button {
+    color: #48D2FE;
+}
+
+.game-board .game-board-row li.symbol-o button {
+    color: #E2BE00;
 }
 
 .game-board .game-board-row li:hover {

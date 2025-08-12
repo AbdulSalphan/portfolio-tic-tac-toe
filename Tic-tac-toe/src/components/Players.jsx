@@ -5,13 +5,13 @@ export default function Players({playersName, onNameChange}) {
     return (
         <div className="players-wrapper">
             <ul>
-                <li>
+                <li key="name-x">
                     <PlayerName player={playersName.x} classify="x" onNameChange={onNameChange} />
                 </li>
-                <li>
+                <li key="name-draw">
                     <PlayerName player="Draw" classify="draw" />
                 </li>
-                <li>
+                <li key="name-o">
                     <PlayerName player={playersName.o} classify="o" onNameChange={onNameChange} />
                 </li>
             </ul>

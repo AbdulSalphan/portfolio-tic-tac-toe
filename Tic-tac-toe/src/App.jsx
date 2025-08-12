@@ -17,8 +17,17 @@ const PLAYERS_NAME = {
   o: "Player O"
 }
 
+function derivedState(refBoard) {
+  let currentPlayer = 'x';
+  if((refBoard.length > 0) && (refBoard[0].player == 'x')) {
+    currentPlayer = 'o';
+  }
+  return currentPlayer;
+}
+
 export default function App() {
   const [playersName, setPlayersName] = useState(PLAYERS_NAME);
+  const [gameBoard, setGameBoard] = useState([]);
 
   function onNameChange(newName, symbol) {
     setPlayersName(prevState => {      
@@ -29,11 +38,35 @@ export default function App() {
     })
   }
 
+  let newGameBoard = [...GAME_BOARD.map(array => [...array])]
+
+  gameBoard.forEach(gameInstance => {
+    const {square, player} = gameInstance;
+    const {row, col} = square;
+    newGameBoard[row][col] = player;
+  });
+  function tileClickHandler(rowIndex, colIndex) {
+    setGameBoard(prevBoard => {
+      let currentPlayer = derivedState(prevBoard);
+      const updatedBoard = [{
+        square: {
+          row: rowIndex,
+          col: colIndex,
+        },
+        player: currentPlayer,
+      },
+      ...prevBoard
+      ]
+      return updatedBoard;
+    })
+    console.log(gameBoard);
+  }
+
   return (
     <div className="app-wrapper">
       <section className="play-area">
         <Players playersName={playersName} onNameChange={onNameChange} />
-        <GameBoard boardValues={GAME_BOARD}/>
+        <GameBoard boardValues={newGameBoard} tileClickHandler={tileClickHandler}/>
         <NewGame buttonName="New Game" />
         <Result playersName={playersName} />
         <div className="result-overlay"></div>
